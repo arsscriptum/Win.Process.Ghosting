@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{2a36e855-a6d0-4f8c-bcaf-3f4461c67de5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="headers">
+      <UniqueIdentifier>{979cc179-0de4-40dc-8dc0-e6303eeb544c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ntdll_undoc.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\pe_hdrs_helper.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\process_env.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\util.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\ntddk.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ntdll_types.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ntdll_undoc.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\pe_hdrs_helper.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\process_env.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\util.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

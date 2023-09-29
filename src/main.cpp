@@ -179,7 +179,7 @@ bool process_ghost(wchar_t* targetPath, BYTE* payladBuf, DWORD payloadSize)
     return true;
 }
 
-int wmain(int argc, wchar_t *argv[])
+int main(int argc, wchar_t *argv[])
 {
 #ifdef _WIN64
     const bool is32bit = false;
@@ -231,3 +231,4 @@ int wmain(int argc, wchar_t *argv[])
 #endif
     return 0;
 }
+    

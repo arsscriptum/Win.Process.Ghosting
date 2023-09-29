@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleasePList|Win32">
+      <Configuration>ReleasePList</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ReleasePList|x64">
+      <Configuration>ReleasePList</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="QtConf">
+    <QtVersion>5.12.4</QtVersion>
+    <QTDIR>$(QtRootPath)</QTDIR>
+    <QtExternalDir>$(QtRootPath)</QtExternalDir>
+  </PropertyGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{55af0a5a-de9b-4941-9549-f1a2b504df79}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>Win.Process.Ghosting</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <Import Project="$(ProjectDir)cfg\winapp.props" Label="ProjectConfig" />
+  <Import Project="$(ProjectDir)cfg\dejainsight.props" Condition="'$(dejainsight_integration)' == ''" />
+  <PropertyGroup Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v142</PlatformToolset>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='ReleasePList|Win32'">
+    <CharacterSet>NotSet</CharacterSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <RootQRCFiles Include="$(SolutionDir)*.qrc" />
+    <AllPs1Files Include="$(SolutionDir)res\**\*.ps1" />
+    <RCCFiles Include="$(SolutionDir)*.rcc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)'=='ReleasePList'">
+    <TargetName>Win.Process.Ghosting</TargetName>
+    <GenerateManifest>false</GenerateManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+    <TargetName>Win.Process.Ghosting</TargetName>
+    <GenerateManifest>false</GenerateManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)'=='Debug'">
+    <TargetName>Win.Process.Ghosting</TargetName>
+    <GenerateManifest>false</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Link>
+      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Link>
+      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleasePList|Win32'">
+    <Link>
+      <EntryPointSymbol>mainCRTStartup</EntryPointSymbol>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Link>
+      <SubSystem>Console</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Link>
+      <SubSystem>Console</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleasePList|x64'">
+    <Link>
+      <SubSystem>Console</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <!--<ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ReleasePList|x64'">
+    <PostBuildEvent>
+      <Command>copy $(OutDir)$(TargetFileName) $(ToolsRoot)</Command>
+    </PostBuildEvent> 
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <PostBuildEvent>
+      <Command>copy $(OutDir)$(TargetFileName) $(ToolsRoot)</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>-->
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <Target Name="CustomClean" BeforeTargets="BeforeBuild">
+    <Message Text="Custom Clean" Importance="high" />
+    <ItemGroup>
+      <_CustomFilesToDelete Include="$(ProjectRoot)\bin\x64\Release\*" />
+    </ItemGroup>
+    <Delete Files="@(_CustomFilesToDelete)" />
+  </Target>
+  <ItemGroup Condition="'$(UsingQt5)' == '1'">
+    <QtRcc Include="$(AppResourceFile)">
+      <QmlCacheGenerate>false</QmlCacheGenerate>
+    </QtRcc>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\main.cpp" />
+    <ClCompile Include="..\src\ntdll_undoc.cpp" />
+    <ClCompile Include="..\src\pe_hdrs_helper.cpp" />
+    <ClCompile Include="..\src\process_env.cpp" />
+    <ClCompile Include="..\src\util.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\ntddk.h" />
+    <ClInclude Include="..\src\ntdll_types.h" />
+    <ClInclude Include="..\src\ntdll_undoc.h" />
+    <ClInclude Include="..\src\pe_hdrs_helper.h" />
+    <ClInclude Include="..\src\process_env.h" />
+    <ClInclude Include="..\src\util.h" />
+  </ItemGroup>
+</Project>
