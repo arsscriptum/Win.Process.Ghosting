@@ -39,7 +39,6 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <Import Project="$(ProjectDir)cfg\winapp.props" Label="ProjectConfig" />
-  <Import Project="$(ProjectDir)cfg\dejainsight.props" Condition="'$(dejainsight_integration)' == ''" />
   <PropertyGroup Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <PlatformToolset>v142</PlatformToolset>
